@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfredo Petruolo - Curriculum Vitae</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            background: #34495e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+        
+        .personal-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item i {
+            width: 24px;
+            text-align: center;
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        main {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            main {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        section {
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--secondary);
+        }
+        
+        .section-content {
+            padding-left: 10px;
+        }
+        
+        .entry {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .entry::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--secondary);
+        }
+        
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+        
+        .entry-title {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .entry-period {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .entry-org {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .entry-desc {
+            font-size: 0.95rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .skill-tag {
+            background: var(--light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--dark);
+            border: 1px solid #ddd;
+        }
+        
+        .publication-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .publication-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .publication-title {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 3px;
+        }
+        
+        .publication-authors, .publication-venue {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 3px;
+        }
+        
+        .publication-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--light);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+        }
+        
+        .download-btn:hover {
+            background: transparent;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="lang-toggle" id="languageToggle">
+                <i class="fas fa-globe"></i> <span id="langText">English</span>
+            </button>
+            
+            <div class="header-content">
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
+                </div>
+                
+                <div class="personal-info">
+                    <h1 id="name">Alfredo Petruolo</h1>
+                    <div class="title" id="title">Esperto informatico e candidato PhD in Cybersecurity</div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span id="phone">+39-331149049</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="email">petruolo95@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="address">Via Antonio Meucci, 17, Cardito, Naples, 80024</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-birthday-cake"></i>
+                            <span id="dob">20/08/1995</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <span id="github">GitHub Profile</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-linkedin"></i>
+                            <span id="linkedin">LinkedIn Profile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="left-column">
+                <section id="bioSection">
+                    <h2><i class="fas fa-user"></i> <span id="bioTitle">Bio & Interessi</span></h2>
+                    <div class="section-content">
+                        <p id="bioText">Esperto informatico con competenze in cybersecurity e protezione delle infrastrutture critiche. Attualmente dottorando presso l'Università di Napoli "Parthenope", concentrandosi su progetti innovativi finanziati dall'Unione Europea.</p>
+                    </div>
+                </section>
+                
+                <section id="educationSection">
+                    <h2><i class="fas fa-graduation-cap"></i> <span id="educationTitle">Formazione</span></h2>
+                    <div class="section-content">
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="edu1Title">Dottorato in Informatica e Ingegneria delle Tecnologie dell'Informazione</div>
+                                <div class="entry-period">2022 - Presente</div>
+                            </div>
+                            <div class="entry-org" id="edu1Org">Università di Napoli "Parthenope", Napoli, Italia</div>
+                        </div>
+                        
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="edu2Title">Accademia Digital Twin</div>
+                                <div class="entry-period">2020</div>
+                            </div>
+                            <div class="entry-org" id="edu2Org">FIWARE, Napoli, Italia</div>
+                            <div class="entry-desc" id="edu2Desc">Implementazione e ottimizzazione di modelli digitali avanzati per la simulazione e analisi di sistemi complessi.</div>
+                        </div>
+                        
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="edu3Title">European Network for Cybersecurity</div>
+                                <div class="entry-period">2022, 2023</div>
+                            </div>
+                            <div class="entry-org" id="edu3Org">Università di Trento, Trento, Italia</div>
+                            <div class="entry-desc" id="edu3Desc">Analisi e implementazione di strategie di sicurezza per la protezione delle infrastrutture critiche.</div>
+                        </div>
+                        
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="edu4Title">Laurea Magistrale in Ingegneria della Sicurezza dei Dati - Cybersecurity</div>
+                                <div class="entry-period">2020-2022</div>
+                            </div>
+                            <div class="entry-org" id="edu4Org">110 e lode, Università di Napoli "Parthenope", Napoli, Italia</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="experienceSection">
+                    <h2><i class="fas fa-briefcase"></i> <span id="experienceTitle">Esperienze Professionali</span></h2>
+                    <div class="section-content">
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="exp1Title">Dottorando in visita</div>
+                                <div class="entry-period">Mar 2024 - Presente</div>
+                            </div>
+                            <div class="entry-org" id="exp1Org">Università di Murcia, Murcia, Spagna</div>
+                            <div class="entry-desc" id="exp1Desc">Studio delle vulnerabilità nella catena di approvvigionamento energetico</div>
+                        </div>
+                        
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="exp2Title">Ufficiale IT</div>
+                                <div class="entry-period">Mag 2022 - Presente</div>
+                            </div>
+                            <div class="entry-org" id="exp2Org">Agenzia delle Dogane e dei Monopoli, Roma, Italia</div>
+                            <div class="entry-desc" id="exp2Desc">In aspettativa.</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="projectsSection">
+                    <h2><i class="fas fa-project-diagram"></i> <span id="projectsTitle">Progetti Europei e Nazionali</span></h2>
+                    <div class="section-content">
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="proj1Title">CyberSEAS - Cyber Securing Energy Data Services</div>
+                                <div class="entry-period">2022 - Presente</div>
+                            </div>
+                            <div class="entry-org" id="proj1Org">Finanziato dall'Unione Europea nell'ambito del programma H2020</div>
+                            <div class="entry-desc" id="proj1Desc">Il progetto si concentra sugli attacchi informatici che minacciano la continuità operativa e la sicurezza delle infrastrutture energetiche critiche, considerando la crescente presenza di fonti di energia rinnovabile e sistemi legacy. Affronta inoltre la protezione dei dati e della privacy dei cittadini nello spazio dati energetico.</div>
+                        </div>
+                        
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="proj2Title">MOST - Centro Nazionale per la Mobilità Sostenibile</div>
+                                <div class="entry-period">2022 - Presente</div>
+                            </div>
+                            <div class="entry-org" id="proj2Org">Finanziato dall'Unione Europea nell'ambito del programma Next Generation EU tramite il PNRR</div>
+                            <div class="entry-desc" id="proj2Desc">Il Centro Nazionale per la Mobilità Sostenibile, in collaborazione con 24 università, il CNR e 24 grandi aziende, mira a sviluppare soluzioni moderne e sostenibili per migliorare la mobilità su scala nazionale.</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="right-column">
+                <section id="skillsSection">
+                    <h2><i class="fas fa-code"></i> <span id="skillsTitle">Competenze</span></h2>
+                    <div class="section-content">
+                        <h3 id="langTitle">Lingue</h3>
+                        <div class="entry-desc" id="languages">Italiano - Madrelingua, Inglese - B2, Francese - B1, Spagnolo - A2</div>
+                        
+                        <h3 style="margin-top: 15px;" id="progTitle">Linguaggi di Programmazione</h3>
+                        <div class="skills">
+                            <div class="skill-tag">C++</div>
+                            <div class="skill-tag">Python</div>
+                        </div>
+                        
+                        <h3 style="margin-top: 15px;" id="keywordsTitle">Parole chiave</h3>
+                        <div class="skills">
+                            <div class="skill-tag">Digital Twin</div>
+                            <div class="skill-tag">Cloud Computing</div>
+                            <div class="skill-tag">Distributed Systems</div>
+                            <div class="skill-tag">SIEM</div>
+                            <div class="skill-tag">IDS</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="academicSection">
+                    <h2><i class="fas fa-book-open"></i> <span id="academicTitle">Ruoli Accademici</span></h2>
+                    <div class="section-content">
+                        <div class="entry">
+                            <div class="entry-header">
+                                <div class="entry-title" id="aca1Title">Membro del Comitato Tecnico Programma</div>
+                                <div class="entry-period">2024 - Presente</div>
+                            </div>
+                            <div class="entry-org" id="aca1Org">Rivista MDPI "Electronics"</div>
+                            <div class="entry-desc" id="aca1Desc">Special Issue on Advanced Monitoring of Smart Critical Infrastructures: Ricerca innovativa che utilizza tecnologie di monitoraggio non invasive—come ultrasuoni, sensori elettromagnetici, radar e dati satellitari—per migliorare l'affidabilità e l'efficienza di infrastrutture critiche come ponti, dighe e strutture energetiche.</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="publicationsSection">
+                    <h2><i class="fas fa-file-alt"></i> <span id="publicationsTitle">Pubblicazioni</span></h2>
+                    <div class="section-content">
+                        <div class="publication-item">
+                            <div class="publication-title" id="pub1Title">Exploiting digital twin technology for cybersecurity monitoring in smart grids</div>
+                            <div class="publication-authors" id="pub1Authors">COPPOLINO, Luigi, et al.</div>
+                            <div class="publication-venue" id="pub1Venue">Proceedings of the 18th International Conference on Availability, Reliability and Security. 2023. p. 1-10.</div>
+                            <a href="#" class="publication-link" id="pub1Link">Visualizza pubblicazione</a>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <div class="publication-title" id="pub2Title">Building Cyber-Resilient Smart Grids with Digital Twins and Data Spaces</div>
+                            <div class="publication-authors" id="pub2Authors">COPPOLINO, Luigi, et al.</div>
+                            <div class="publication-venue" id="pub2Venue">Applied Sciences, 2023, 13.24: 13060.</div>
+                            <a href="#" class="publication-link" id="pub2Link">Visualizza pubblicazione</a>
+                        </div>
+                        
+                        <div class="publication-item">
+                            <div class="publication-title" id="pub3Title">Mobile Phones in the Cloud-Edge Continuum: Understanding the TEE's Role</div>
+                            <div class="publication-authors" id="pub3Authors">DE CRECCHIO, Alessandro; et al.</div>
+                            <div class="publication-venue" id="pub3Venue">International Conference on Advanced Information Networking and Applications. Cham: Springer Nature Switzerland, 2024. p. 234-243.</div>
+                            <a href="#" class="publication-link" id="pub3Link">Visualizza pubblicazione</a>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="teachingSection">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> <span id="teachingTitle">Esperienza Didattica - Seminari</span></h2>
+                    <div class="section-content">
+                        <div class="entry">
+                            <div class="entry-title" id="teach1Title">Python Essentials: A Structured Introduction</div>
+                            <div class="entry-org" id="teach1Org">Università di Napoli "Parthenope", Napoli</div>
+                        </div>
+                        
+                        <div class="entry">
+                            <div class="entry-title" id="teach2Title">A Deep Dive into Web Semantics: Concepts and Practices</div>
+                            <div class="entry-org" id="teach2Org">Università di Napoli "Parthenope", Napoli</div>
+                        </div>
+                        
+                        <div class="entry">
+                            <div class="entry-title" id="teach3Title">How to Build Realistic Security Testbeds Using Digital Twin With FIWARE Technology</div>
+                            <div class="entry-org" id="teach3Org">Università di Roma</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="honorsSection">
+                    <h2><i class="fas fa-award"></i> <span id="honorsTitle">Riconoscimenti</span></h2>
+                    <div class="section-content">
+                        <div class="entry">
+                            <div class="entry-title" id="honor1Title">Croce commemorativa per la salvaguardia delle libere istituzioni e il mantenimento dell'ordine pubblico nell'operazione "Strade Sicure"</div>
+                            <div class="entry-org" id="honor1Org">Esercito Italiano</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        
+        <footer>
+            <p id="footerText">© 2024 Alfredo Petruolo - Curriculum Vitae</p>
+            <a href="#" class="download-btn" id="downloadBtn"><i class="fas fa-download"></i> Scarica PDF</a>
+        </footer>
+    </div>
+    
+    <script>
+        // Language data
+        const translations = {
+            en: {
+                name: "Alfredo Petruolo",
+                title: "Computer Expert and PhD Candidate in Cybersecurity",
+                phone: "+39-331149049",
+                email: "petruolo95@gmail.com",
+                address: "Via Antonio Meucci, 17, Cardito, Naples, 80024",
+                dob: "Date of Birth: 20/08/1995",
+                github: "GitHub Profile",
+                linkedin: "LinkedIn Profile",
+                bioTitle: "Bio & Interests",
+                bioText: "Computer expert with skills in cybersecurity and critical infrastructure protection. Currently, a Ph.D. candidate at the University of Naples 'Parthenope', focusing on innovative projects funded by the European Union.",
+                educationTitle: "Education",
+                edu1Title: "Ph.D. in Computer Science and Information Technology Engineering",
+                edu1Org: "University of Naples 'Parthenope', Naples, Italy",
+                edu2Title: "Digital Twin Academy",
+                edu2Org: "FIWARE, Naples, Italy",
+                edu2Desc: "Implementation and optimization of advanced digital models for the simulation and analysis of complex systems.",
+                edu3Title: "European Network for Cybersecurity",
+                edu3Org: "University of Trento, Trento, Italy",
+                edu3Desc: "Analysis and implementation of security strategies for the protection of critical infrastructures.",
+                edu4Title: "Master's Degree in Data Security Engineering - Cybersecurity",
+                edu4Org: "110 cum Laude, University of Naples 'Parthenope', Naples, Italy",
+                experienceTitle: "Professional Experience",
+                exp1Title: "Visiting Ph.D. Student",
+                exp1Org: "University of Murcia, Murcia, Spain",
+                exp1Desc: "Study of vulnerabilities in the energy supply chain",
+                exp2Title: "IT Officer",
+                exp2Org: "Customs and Monopolies Agency, Rome, Italy",
+                exp2Desc: "On leave.",
+                projectsTitle: "European and National Projects",
+                proj1Title: "CyberSEAS - Cyber Securing Energy Data Services",
+                proj1Org: "Funded by the European Union under the H2020 program",
+                proj1Desc: "The project focuses on cyber attacks threatening the operational continuity and security of critical energy infrastructures, considering the increasing presence of renewable energy sources and legacy systems. It also addresses the protection of citizens' data and privacy in the energy data space.",
+                proj2Title: "MOST - National Center for Sustainable Mobility",
+                proj2Org: "Funded by the European Union under the Next Generation EU program through the PNRR",
+                proj2Desc: "The National Center for Sustainable Mobility, in collaboration with 24 universities, the CNR, and 24 large companies, aims to develop modern and sustainable solutions to improve mobility on a national scale.",
+                skillsTitle: "Skills",
+                langTitle: "Languages",
+                languages: "Italian - Native, English - B2, French - B1, Spanish - A2",
+                progTitle: "Programming Languages",
+                keywordsTitle: "Keywords",
+                academicTitle: "Academic Roles",
+                aca1Title: "Technical Program Committee Member",
+                aca1Org: "MDPI Journal 'Electronics'",
+                aca1Desc: "Special Issue on Advanced Monitoring of Smart Critical Infrastructures: Innovative research that leverages non-invasive monitoring technologies—such as ultrasonics, electromagnetic sensors, radar, and satellite data—to enhance the dependability and efficiency of critical infrastructures like bridges, dams, and energy facilities.",
+                publicationsTitle: "Publications",
+                pub1Title: "Exploiting digital twin technology for cybersecurity monitoring in smart grids",
+                pub1Authors: "COPPOLINO, Luigi, et al.",
+                pub1Venue: "Proceedings of the 18th International Conference on Availability, Reliability and Security. 2023. p. 1-10.",
+                pub1Link: "View Publication",
+                pub2Title: "Building Cyber-Resilient Smart Grids with Digital Twins and Data Spaces",
+                pub2Authors: "COPPOLINO, Luigi, et al.",
+                pub2Venue: "Applied Sciences, 2023, 13.24: 13060.",
+                pub2Link: "View Publication",
+                pub3Title: "Mobile Phones in the Cloud-Edge Continuum: Understanding the TEE's Role",
+                pub3Authors: "DE CRECCHIO, Alessandro; et al.",
+                pub3Venue: "International Conference on Advanced Information Networking and Applications. Cham: Springer Nature Switzerland, 2024. p. 234-243.",
+                pub3Link: "View Publication",
+                teachingTitle: "Teaching Experience - Seminars",
+                teach1Title: "Python Essentials: A Structured Introduction",
+                teach1Org: "University of Naples 'Parthenope', Naples",
+                teach2Title: "A Deep Dive into Web Semantics: Concepts and Practices",
+                teach2Org: "University of Naples 'Parthenope', Naples",
+                teach3Title: "How to Build Realistic Security Testbeds Using Digital Twin With FIWARE Technology",
+                teach3Org: "Universities of Rome",
+                honorsTitle: "Honors",
+                honor1Title: "Commemorative Cross for safeguarding free institutions and maintaining public order within the 'Strade Sicure' operation",
+                honor1Org: "Italian Army",
+                footerText: "© 2024 Alfredo Petruolo - Curriculum Vitae",
+                downloadBtn: "Download PDF",
+                langText: "English"
+            },
+            it: {
+                name: "Alfredo Petruolo",
+                title: "Esperto informatico e candidato PhD in Cybersecurity",
+                phone: "+39-331149049",
+                email: "petruolo95@gmail.com",
+                address: "Via Antonio Meucci, 17, Cardito, Napoli, 80024",
+                dob: "Data di nascita: 20/08/1995",
+                github: "Profilo GitHub",
+                linkedin: "Profilo LinkedIn",
+                bioTitle: "Bio & Interessi",
+                bioText: "Esperto informatico con competenze in cybersecurity e protezione delle infrastrutture critiche. Attualmente dottorando presso l'Università di Napoli 'Parthenope', concentrandosi su progetti innovativi finanziati dall'Unione Europea.",
+                educationTitle: "Formazione",
+                edu1Title: "Dottorato in Informatica e Ingegneria delle Tecnologie dell'Informazione",
+                edu1Org: "Università di Napoli 'Parthenope', Napoli, Italia",
+                edu2Title: "Accademia Digital Twin",
+                edu2Org: "FIWARE, Napoli, Italia",
+                edu2Desc: "Implementazione e ottimizzazione di modelli digitali avanzati per la simulazione e analisi di sistemi complessi.",
+                edu3Title: "European Network for Cybersecurity",
+                edu3Org: "Università di Trento, Trento, Italia",
+                edu3Desc: "Analisi e implementazione di strategie di sicurezza per la protezione delle infrastrutture critiche.",
+                edu4Title: "Laurea Magistrale in Ingegneria della Sicurezza dei Dati - Cybersecurity",
+                edu4Org: "110 e lode, Università di Napoli 'Parthenope', Napoli, Italia",
+                experienceTitle: "Esperienze Professionali",
+                exp1Title: "Dottorando in visita",
+                exp1Org: "Università di Murcia, Murcia, Spagna",
+                exp1Desc: "Studio delle vulnerabilità nella catena di approvvigionamento energetico",
+                exp2Title: "Ufficiale IT",
+                exp2Org: "Agenzia delle Dogane e dei Monopoli, Roma, Italia",
+                exp2Desc: "In aspettativa.",
+                projectsTitle: "Progetti Europei e Nazionali",
+                proj1Title: "CyberSEAS - Cyber Securing Energy Data Services",
+                proj1Org: "Finanziato dall'Unione Europea nell'ambito del programma H2020",
+                proj1Desc: "Il progetto si concentra sugli attacchi informatici che minacciano la continuità operativa e la sicurezza delle infrastrutture energetiche critiche, considerando la crescente presenza di fonti di energia rinnovabile e sistemi legacy. Affronta inoltre la protezione dei dati e della privacy dei cittadini nello spazio dati energetico.",
+                proj2Title: "MOST - Centro Nazionale per la Mobilità Sostenibile",
+                proj2Org: "Finanziato dall'Unione Europea nell'ambito del programma Next Generation EU tramite il PNRR",
+                proj2Desc: "Il Centro Nazionale per la Mobilità Sostenibile, in collaborazione con 24 università, il CNR e 24 grandi aziende, mira a sviluppare soluzioni moderne e sostenibili per migliorare la mobilità su scala nazionale.",
+                skillsTitle: "Competenze",
+                langTitle: "Lingue",
+                languages: "Italiano - Madrelingua, Inglese - B2, Francese - B1, Spagnolo - A2",
+                progTitle: "Linguaggi di Programmazione",
+                keywordsTitle: "Parole chiave",
+                academicTitle: "Ruoli Accademici",
+                aca1Title: "Membro del Comitato Tecnico Programma",
+                aca1Org: "Rivista MDPI 'Electronics'",
+                aca1Desc: "Special Issue on Advanced Monitoring of Smart Critical Infrastructures: Ricerca innovativa che utilizza tecnologie di monitoraggio non invasive—come ultrasuoni, sensori elettromagnetici, radar e dati satellitari—per migliorare l'affidabilità e l'efficienza di infrastrutture critiche come ponti, dighe e strutture energetiche.",
+                publicationsTitle: "Pubblicazioni",
+                pub1Title: "Exploiting digital twin technology for cybersecurity monitoring in smart grids",
+                pub1Authors: "COPPOLINO, Luigi, et al.",
+                pub1Venue: "Proceedings of the 18th International Conference on Availability, Reliability and Security. 2023. p. 1-10.",
+                pub1Link: "Visualizza pubblicazione",
+                pub2Title: "Building Cyber-Resilient Smart Grids with Digital Twins and Data Spaces",
+                pub2Authors: "COPPOLINO, Luigi, et al.",
+                pub2Venue: "Applied Sciences, 2023, 13.24: 13060.",
+                pub2Link: "Visualizza pubblicazione",
+                pub3Title: "Mobile Phones in the Cloud-Edge Continuum: Understanding the TEE's Role",
+                pub3Authors: "DE CRECCHIO, Alessandro; et al.",
+                pub3Venue: "International Conference on Advanced Information Networking and Applications. Cham: Springer Nature Switzerland, 2024. p. 234-243.",
+                pub3Link: "Visualizza pubblicazione",
+                teachingTitle: "Esperienza Didattica - Seminari",
+                teach1Title: "Python Essentials: A Structured Introduction",
+                teach1Org: "Università di Napoli 'Parthenope', Napoli",
+                teach2Title: "A Deep Dive into Web Semantics: Concepts and Practices",
+                teach2Org: "Università di Napoli 'Parthenope', Napoli",
+                teach3Title: "How to Build Realistic Security Testbeds Using Digital Twin With FIWARE Technology",
+                teach3Org: "Università di Roma",
+                honorsTitle: "Riconoscimenti",
+                honor1Title: "Croce commemorativa per la salvaguardia delle libere istituzioni e il mantenimento dell'ordine pubblico nell'operazione 'Strade Sicure'",
+                honor1Org: "Esercito Italiano",
+                footerText: "© 2024 Alfredo Petruolo - Curriculum Vitae",
+                downloadBtn: "Scarica PDF",
+                langText: "Italiano"
+            }
+        };
+
+        // Set initial language to English
+        let currentLang = 'en';
+        
+        // Function to apply translations
+        function applyTranslations(lang) {
+            const data = translations[lang];
+            for (const key in data) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = data[key];
+                }
+            }
+            document.documentElement.lang = lang === 'en' ? 'en' : 'it';
+        }
+        
+        // Language toggle functionality
+        document.getElementById('languageToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'en' ? 'it' : 'en';
+            applyTranslations(currentLang);
+        });
+        
+        // Initialize with English translations
+        applyTranslations(currentLang);
+    </script>
+</body>
+</html>
