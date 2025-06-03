@@ -25,6 +25,10 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #000a1a 100%);
             color: var(--text);
@@ -102,6 +106,20 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+        }
+        
+        .name-main {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            line-height: 1.1;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
         }
         
         .title {
@@ -547,7 +565,7 @@
                     <i class="fas fa-user-shield"></i>
                 </div>
                 <div class="header-text">
-                    <h1 id="name">Alfredo Petruolo</h1>
+                    <div class="name-main" id="nameMain">Alfredo Petruolo</div>
                     <div class="title" id="title">PhD Candidate in Cybersecurity</div>
                 </div>
             </div>
@@ -568,11 +586,12 @@
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#publications" class="nav-link">Publications</a>
+                <a href="#honors" class="nav-link">Honors</a>
             </div>
         </nav>
         
         <div class="content-container">
-            <div class="section">
+            <div class="section" id="bio">
                 <div class="section-header">
                     <i class="fas fa-user-secret"></i>
                     <div class="section-title" id="bioTitle">Professional Profile</div>
@@ -584,8 +603,8 @@
                 </div>
                 
                 <div class="terminal">
-                    <div class="terminal-line">whois Alfredo_Petruolo</div>
-                    <div class="terminal-output">Cybersecurity Specialist | Critical Infrastructure Protection | Digital Twin Expert</div>
+                    <div class="terminal-line">whoami</div>
+                    <div class="terminal-output">Alfredo_Petruolo | Cybersecurity Specialist | Critical Infrastructure Protection | Digital Twin Expert</div>
                     <div class="terminal-line">status --current</div>
                     <div class="terminal-output">PhD Candidate at University of Naples "Parthenope"</div>
                 </div>
@@ -619,7 +638,7 @@
                 </div>
             </div>
             
-            <div class="section">
+            <div class="section" id="education">
                 <div class="section-header">
                     <i class="fas fa-graduation-cap"></i>
                     <div class="section-title" id="educationTitle">Education</div>
@@ -658,7 +677,7 @@
                 </div>
             </div>
             
-            <div class="section">
+            <div class="section" id="experience">
                 <div class="section-header">
                     <i class="fas fa-briefcase"></i>
                     <div class="section-title" id="experienceTitle">Professional Experience</div>
@@ -692,7 +711,7 @@
                 </div>
             </div>
             
-            <div class="section full-width">
+            <div class="section full-width" id="projects">
                 <div class="section-header">
                     <i class="fas fa-project-diagram"></i>
                     <div class="section-title" id="projectsTitle">Research Projects</div>
@@ -729,7 +748,7 @@
                 </div>
             </div>
             
-            <div class="section">
+            <div class="section" id="skills">
                 <div class="section-header">
                     <i class="fas fa-code"></i>
                     <div class="section-title" id="skillsTitle">Technical Skills</div>
@@ -757,7 +776,7 @@
                 </div>
             </div>
             
-            <div class="section">
+            <div class="section" id="academic">
                 <div class="section-header">
                     <i class="fas fa-book-open"></i>
                     <div class="section-title" id="academicTitle">Academic Roles</div>
@@ -791,42 +810,26 @@
                 </div>
             </div>
             
-            <div class="section full-width">
+            <div class="section full-width" id="publications">
                 <div class="section-header">
                     <i class="fas fa-file-alt"></i>
                     <div class="section-title" id="publicationsTitle">Publications</div>
                 </div>
-                
-                <div class="publication-item">
-                    <div class="publication-title" id="pub1Title">Exploiting digital twin technology for cybersecurity monitoring in smart grids</div>
-                    <div class="publication-authors" id="pub1Authors">COPPOLINO, Luigi, et al.</div>
-                    <div class="publication-venue" id="pub1Venue">Proceedings of the 18th International Conference on Availability, Reliability and Security. 2023</div>
-                    <a href="#" class="publication-link" id="pub1Link">View Publication</a>
-                </div>
-                
-                <div class="publication-item">
-                    <div class="publication-title" id="pub2Title">Building Cyber-Resilient Smart Grids with Digital Twins and Data Spaces</div>
-                    <div class="publication-authors" id="pub2Authors">COPPOLINO, Luigi, et al.</div>
-                    <div class="publication-venue" id="pub2Venue">Applied Sciences, 2023, 13.24: 13060.</div>
-                    <a href="#" class="publication-link" id="pub2Link">View Publication</a>
-                </div>
-                
-                <div class="publication-item">
-                    <div class="publication-title" id="pub3Title">Mobile Phones in the Cloud-Edge Continuum</div>
-                    <div class="publication-authors" id="pub3Authors">DE CRECCHIO, Alessandro; et al.</div>
-                    <div class="publication-venue" id="pub3Venue">International Conference on Advanced Information Networking and Applications. 2024</div>
-                    <a href="#" class="publication-link" id="pub3Link">View Publication</a>
-                </div>
-                
-                <div class="publication-item">
-                    <div class="publication-title" id="pub4Title">Enabling Privacy Preserving Data Exchange in the Energy Supply Chain</div>
-                    <div class="publication-authors" id="pub4Authors">COPPOLINO, Luigi et al.</div>
-                    <div class="publication-venue" id="pub4Venue">Accepted at ITASEC2024</div>
-                    <a href="#" class="publication-link" id="pub4Link">View Publication</a>
-                </div>
+                <ul class="publication-list">
+                    <li class="publication-item">COPPOLINO, Luigi, et al. Exploiting digital twin technology for cybersecurity monitoring in smart grids. In: Proceedings of the 18th International Conference on Availability, Reliability and Security. 2023. p. 1-10.</li>
+                    <li class="publication-item">COPPOLINO, Luigi, et al. Building Cyber-Resilient Smart Grids with Digital Twins and Data Spaces. Applied Sciences, 2023, 13.24: 13060.</li>
+                    <li class="publication-item">GIEŁCZYK, Agata, et al. The ATENA project: an international contribution to AI in Poland.</li>
+                    <li class="publication-item">FUJITA, H.; GUIZZI, G. Securing FIWARE with TEE Technology. In: New Trends in Intelligent Software Methodologies, Tools and Techniques: Proceedings of the 22nd International Conference on New Trends in Intelligent Software Methodologies, Tools and Techniques (SoMeT23). IOS Press, 2023. p. 149.</li>
+                    <li class="publication-item">DE CRECCHIO, Alessandro; et al. Mobile Phones in the Cloud-Edge Continuum: Understanding the TEE’s Role. In: International Conference on Advanced Information Networking and Applications. Cham: Springer Nature Switzerland, 2024. p. 234-243.</li>
+                    <li class="publication-item">COPPOLINO, Luigi et al. Connecting the Mobility and the Refuelling/Recharging Infrastructures: The Role of Data Spaces. Accepted at Zero-carbon refuelling/recharging infrastructures and grids PNRR MOST Spoke 7 - Connected networks and Smart Infrastructure</li>
+                    <li class="publication-item">COPPOLINO, Luigi et al. Enabling Privacy Preserving Data Exchange in the Energy Supply Chain. Accepted at ITASEC2024</li>
+                    <li class="publication-item">NARDONE, Roberto et al. Secure and Transparent Data Sharing among Connected Devices: Integrating Data Spaces and Provenance, IEEE International Conference on Cyber Security and Resilience, 2024</li>
+                    <li class="publication-item">COPPOLINO, Luigi, et al. Exploiting Data Spaces to Enable Privacy Preserving Data Exchange in the Energy Supply Chain. 2022.</li>
+                    <li class="publication-item">COPPOLINO, Luigi, et al. Increasing the Cybersecurity of Smart Grid by Prosumer Monitoring, IEEE Transaction on Industrial Informatics, 2025</li>
+                </ul>
             </div>
             
-            <div class="section">
+            <div class="section" id="honors">
                 <div class="section-header">
                     <i class="fas fa-award"></i>
                     <div class="section-title" id="honorsTitle">Honors</div>
@@ -850,7 +853,7 @@
         // Language data
         const translations = {
             en: {
-                name: "Alfredo Petruolo",
+                nameMain: "Alfredo Petruolo",
                 title: "PhD Candidate in Cybersecurity",
                 phone: "+39-331149049",
                 email: "petruolo95@gmail.com",
@@ -927,16 +930,14 @@
                 teach2Title: "Web Semantics",
                 teach2Org: "University of Naples 'Parthenope'",
                 honorsTitle: "Honors",
-                honor1Title: "Commemorative Cross",
-                honor1Org: "Italian Army",
-                honor1Desc: "For safeguarding free institutions and maintaining public order",
+                honorsBtn: "Honors",
                 footerText: "© 2024 Alfredo Petruolo - Cybersecurity Specialist",
                 downloadBtn: "Download PDF",
                 downloadText: "Download PDF",
                 langText: "English"
             },
             it: {
-                name: "Alfredo Petruolo",
+                nameMain: "Alfredo Petruolo",
                 title: "Candidato PhD in Cybersecurity",
                 phone: "+39-331149049",
                 email: "petruolo95@gmail.com",
@@ -1013,9 +1014,7 @@
                 teach2Title: "Web Semantics",
                 teach2Org: "Università di Napoli 'Parthenope'",
                 honorsTitle: "Riconoscimenti",
-                honor1Title: "Croce Commemorativa",
-                honor1Org: "Esercito Italiano",
-                honor1Desc: "Per la salvaguardia delle libere istituzioni e il mantenimento dell'ordine pubblico",
+                honorsBtn: "Riconoscimenti",
                 footerText: "© 2024 Alfredo Petruolo - Esperto in Cybersecurity",
                 downloadBtn: "Scarica PDF",
                 downloadText: "Scarica PDF",
@@ -1035,6 +1034,9 @@
                     element.textContent = data[key];
                 }
             }
+            // Aggiorna il testo del bottone Honors
+            const honorsBtn = document.querySelector('.nav-link[href="#honors"]');
+            if (honorsBtn) honorsBtn.textContent = data.honorsBtn;
             document.documentElement.lang = lang === 'en' ? 'en' : 'it';
         }
         
