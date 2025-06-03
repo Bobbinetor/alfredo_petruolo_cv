@@ -530,6 +530,49 @@
             margin-left: 20px;
         }
         
+        /* Bottone torna su: sempre visibile quando si scorre */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 18px;
+            background: var(--secondary);
+            color: var(--primary-dark);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            cursor: pointer;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, box-shadow 0.25s, background 0.25s, border 0.25s;
+        }
+        .back-to-top.visible {
+            opacity: 0.9;
+            pointer-events: auto;
+            border-color: var(--accent);
+        }
+        .back-to-top:hover, .back-to-top:focus {
+            opacity: 1;
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+            border-color: #fff;
+        }
+        @media (max-width: 768px) {
+            .back-to-top {
+                right: 10px;
+                bottom: 15px;
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+        }
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -554,6 +597,21 @@
                 padding: 8px 15px;
                 font-size: 0.85rem;
             }
+        }
+        
+        /* Stili per i link del CV */
+        .contact-item a, .project-title a {
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        
+        .contact-item:hover a {
+            color: var(--secondary) !important;
+            text-shadow: 0 0 5px rgba(0, 184, 148, 0.3);
+        }
+        
+        .project-card:hover .project-title a {
+            color: var(--secondary) !important;
+            text-shadow: 0 0 5px rgba(0, 184, 148, 0.3);
         }
     </style>
 </head>
@@ -629,11 +687,11 @@
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-github"></i>
-                        <span id="github">GitHub Profile</span>
+                        <a href="https://github.com/Bobbinetor" target="_blank" style="color: inherit; text-decoration: none;" id="github">GitHub Profile</a>
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
-                        <span id="linkedin">LinkedIn Profile</span>
+                        <a href="https://www.linkedin.com/in/alfredo-petruolo-6305a9194/" target="_blank" style="color: inherit; text-decoration: none;" id="linkedin">LinkedIn Profile</a>
                     </div>
                 </div>
             </div>
@@ -686,7 +744,7 @@
                 <div class="entry">
                     <div class="entry-header">
                         <div class="entry-title" id="exp1Title">Visiting Ph.D. Student</div>
-                        <div class="entry-period">Mar 2024 - Present</div>
+                        <div class="entry-period">Mar 2024 - Sept 2024</div>
                     </div>
                     <div class="entry-org" id="exp1Org">University of Murcia, Spain</div>
                     <div class="entry-desc" id="exp1Desc">Study of vulnerabilities in the energy supply chain</div>
@@ -719,14 +777,18 @@
                 
                 <div class="project-grid">
                     <div class="project-card">
-                        <div class="project-title" id="proj1Title">CyberSEAS</div>
+                        <div class="project-title">
+                            <a href="https://cyberseas.eu/" target="_blank" style="color: inherit; text-decoration: none;" id="proj1Title">CyberSEAS</a>
+                        </div>
                         <div class="project-period">2022 - Present</div>
                         <div class="project-funding" id="proj1Org">EU Horizon 2020</div>
                         <div class="project-desc" id="proj1Desc">Cyber Securing Energy Data Services focusing on protecting critical energy infrastructures from cyber attacks.</div>
                     </div>
                     
                     <div class="project-card">
-                        <div class="project-title" id="proj2Title">MOST</div>
+                        <div class="project-title">
+                            <a href="https://www.centronazionalemost.it/" target="_blank" style="color: inherit; text-decoration: none;" id="proj2Title">MOST</a>
+                        </div>
                         <div class="project-period">2022 - Present</div>
                         <div class="project-funding" id="proj2Org">EU Next Generation</div>
                         <div class="project-desc" id="proj2Desc">National Center for Sustainable Mobility developing modern solutions for national scale mobility.</div>
@@ -847,6 +909,10 @@
             <p id="footerText">© 2024 Alfredo Petruolo - Cybersecurity Specialist</p>
             <a href="#" class="download-btn" id="downloadBtn"><i class="fas fa-download"></i> <span id="downloadText">Download PDF</span></a>
         </footer>
+        
+        <button class="back-to-top" id="backToTop" title="Torna su" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
     </div>
     
     <script>
@@ -1031,7 +1097,13 @@
             for (const key in data) {
                 const element = document.getElementById(key);
                 if (element) {
-                    element.textContent = data[key];
+                    // Se l'elemento contiene un link, aggiorna solo il testo del link
+                    const link = element.querySelector('a');
+                    if (link) {
+                        link.textContent = data[key];
+                    } else {
+                        element.textContent = data[key];
+                    }
                 }
             }
             // Aggiorna il testo del bottone Honors
@@ -1056,6 +1128,19 @@
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
             });
+        });
+        
+        // Bottone torna su: sempre visibile quando si scorre
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
