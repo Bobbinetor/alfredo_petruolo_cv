@@ -93,9 +93,14 @@
             box-shadow: 0 0 20px rgba(0, 184, 148, 0.2);
         }
         
-        .profile-icon i {
-            font-size: 40px;
-            color: var(--secondary);
+        .profile-icon img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--secondary);
+            box-shadow: 0 0 20px rgba(0, 184, 148, 0.2);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
         }
         
         .header-text h1 {
@@ -620,7 +625,7 @@
         <header>
             <div class="header-left">
                 <div class="profile-icon">
-                    <i class="fas fa-user-shield"></i>
+                    <img src="foto_profilo.png" alt="Foto profilo di Alfredo Petruolo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 2px solid var(--secondary); box-shadow: 0 0 20px rgba(0, 184, 148, 0.2); background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);" />
                 </div>
                 <div class="header-text">
                     <div class="name-main" id="nameMain">Alfredo Petruolo</div>
